@@ -19,43 +19,39 @@ def get_subject():
     con1.close()
     return sub_list
 
-def get_content(sub_name):
+#get_content 를 위한 리스트
+date_list = []  # date_name 리스트
+week_list = []  # week_name 리스트
+content_list = []  # content_name 리스트
+
+def get_content(sub_name, sub_week,sub_date):
     os.putenv('NLS_LANG', '.UTF8')
     con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
     cursor = con1.cursor()
 
-    content_notepad = ""
-    date_list = []  # date_name 리스트
-    week_list = []  # week_name 리스트
-    content_list = []  # content_name 리스트
+    cursor.execute("SELECT * FROM notepad")
+    is_exist = False
+    try:
+        for row in cursor:
+            if( row[0] == sub_name): #과목명 같을 경우
+                if(row[1] == sub_week): # week 다를 경우
+                    is_exist = True
 
-    query_name = "select sub_name from notepad"
-    query_date = "select sub_date from notepad"
-    query_week = "select sub_week from notepad"
-    query_content = "select sub_content from notepad"
+                week_list.append(row[1])
+                date_list.append(row[2])
+                content_list.append(row[3])
 
-    cursor.execute(query_name)
-    for row in cursor:
-        str(row) == sub_name
+        content_notepad = sub_name + "\n===================\n"
+        for i in range(len(week_list)):
+            content_notepad += str(week_list[i]).strip('[]/\'') + "주차 - " \
+                               + str(date_list[i]).strip("[]/\''") +"\n\n"\
+                               + str(content_list[i]).strip('[]/\'') +"\n\n\n"
+        if(not is_exist):
+            content_notepad += "===================\n"
+            content_notepad += str(sub_week) + "주차 - " + sub_date + "\n"
 
-    cursor.execute(query_date)
-    for row in cursor:
-        length = len(row)
-        date_list.append(list(row))
-
-    cursor.execute(query_week)
-    for row in cursor:
-        week_list.append(list(row))
-
-    cursor.execute(query_content)
-    for row in cursor:
-        content_list.append(list(row))
-    content_notepad="===================\n"
-
-    for i in range(length):
-        content_notepad += str(week_list[i]).strip('[]/\'') + "주차 - " \
-                           + str(date_list[i]).strip("[]/\''") +"\n\n"
-        content_notepad += str(content_list[i]).strip('[]/\'') +"\n\n\n"
+    except Exception as ex:
+        print("에러가 발생했습니다. :",ex)
 
     cursor.close()
     con1.close()
