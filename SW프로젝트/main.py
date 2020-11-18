@@ -5,7 +5,6 @@ from PyQt5.QtWidgets import QApplication
 import pyautogui
 from datetime import datetime
 from oracleDB import *
-#from oracleDB import get_subject, add_subject, get_content
 from find import findWindow
 
 # notepad 기본, ui 참조 : https://onedrive.live.com/?cid=eb4f2a403d81809b&id=EB4F2A403D81809B%21201640&authkey=!AGYeXcxeLR6zXQU
@@ -29,7 +28,7 @@ class selectSubject(QDialog):
 
         for i in sub_list:
             self.list_subject.addItem(str(i))
-            print(i)
+
         # list_subject
         self.list_subject.itemDoubleClicked.connect(self.itemDoubleClicked)
         # list_week
@@ -86,17 +85,21 @@ class WindowClass(QMainWindow, form_class):
         
         #내용 불러오기
         content = get_content(selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date)
-
+        self.setWindowTitle("과목 : " + selectSubject.sub_name)
         self.plainTextEdit.setPlainText(content)
 
+        #생성된 노트 마지막에 커서 위치
+        #self.cursor = self.plainTextEdit.textCursor()
+        #self.cursor.setPosition(len(content))
+        
         self.opened = False
         self.opened_file_path = '제목 없음'
         self.capture_cnt = 0
 
         self.setMouseTracking(True)
 
+    # 열린 적 없을 시
     def ischanged(self):
-        # 열린 적 없을 시
         if not self.opened:
             print('not changed')
             if self.plainTextEdit.toPlainText().strip():  # 열린적은 없는데 에디터 내용이 있으면
@@ -114,6 +117,7 @@ class WindowClass(QMainWindow, form_class):
         else:  # 열린적이 있고 변경사항이 있으면
             return True
 
+    #변경된 데이터 저장
     def save_changed_data(self):
         msgBox = QMessageBox()
         msgBox.setWindowTitle('저장')
@@ -141,12 +145,17 @@ class WindowClass(QMainWindow, form_class):
                 event.ignore()
 
     def save_file(self, fname):
+        sub_name = selectSubject.sub_name
+        sub_week = selectSubject.sub_week
+        sub_date = selectSubject.sub_date
+
         data = self.plainTextEdit.toPlainText()
 
-        content_start = data.find(selectSubject.sub_date) + len(selectSubject.sub_date) + 1
-        selectSubject.sub_content = data[content_start:]
+        #선택한 주차 내용 불러오기
+        content_start = data.find(sub_date) + len(sub_date) + 1
+        sub_content = data[content_start:]
 
-        tup = (selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date, selectSubject.sub_content)
+        tup = (sub_name, sub_week, sub_date,sub_content)
         add_subject(tup)  # oracle db에 저장
 
         '''
@@ -236,8 +245,6 @@ class WindowClass(QMainWindow, form_class):
     def captureFunction(self):
         self.tempNow = datetime.datetime.now()
         self.now = self.tempNow.strftime('%m-%d-%H-%M-%S')
-        #firstMouseX, firstMouseY = pyautogui.position()
-        #lastMouseX, lastMouseY = pyautogui.position()
 
         pyautogui.screenshot('D:/{}.png'.format(self.now), region=(500, 100, 1000, 700))
         print("캡쳐 완료")

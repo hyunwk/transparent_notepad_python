@@ -71,7 +71,6 @@ class findWindow(QDialog):
         self.cursor.setPosition(start)  # 앞에 커서 찍고
         self.cursor.movePosition(QTextCursor.Right, QTextCursor.KeepAnchor, end - start)  # 뒤로 커서를 움직인다
         self.pe.setTextCursor(self.cursor)
-        print()
 
     def notFoundMsg(self, pattern):
         msgBox = QMessageBox()
