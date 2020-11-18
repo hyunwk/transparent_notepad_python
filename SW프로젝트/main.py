@@ -1,6 +1,7 @@
 import sys
 from PyQt5.Qt import *
 from PyQt5 import uic
+from PyQt5 import *
 from PyQt5.QtWidgets import QApplication
 import pyautogui
 from datetime import datetime
@@ -87,6 +88,7 @@ class WindowClass(QMainWindow, form_class):
         content = get_content(selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date)
         self.setWindowTitle("과목 : " + selectSubject.sub_name)
         self.plainTextEdit.setPlainText(content)
+
 
         #생성된 노트 마지막에 커서 위치
         #self.cursor = self.plainTextEdit.textCursor()
@@ -248,6 +250,32 @@ class WindowClass(QMainWindow, form_class):
 
         pyautogui.screenshot('D:/{}.png'.format(self.now), region=(500, 100, 1000, 700))
         print("캡쳐 완료")
+
+#plaintextedit에 사진 넣기 위해
+"""class MyTextBrowser(QtGui.QTextBrowser):
+    def __init__(self, parent=None):
+        super(MyTextBrowser, self).__init__(parent)
+
+        self.setReadOnly(False)
+
+    def canInsertFromMimeData(self, source):
+        if source.hasImage():
+            return True
+
+        else:
+            return super(MyTextBrowser, self).canInsertFromMimeData(source)
+
+    def insertFromMimeData(self, source):
+        if source.hasImage():
+            image = QtCore.QVariant(source.imageData())
+
+            document = self.document()
+            document.addResource(
+                QtGui.QTextDocument.ImageResource,
+                QtCore.QUrl("image"),
+                image
+            )
+"""
 
 app = QApplication(sys.argv)
 mainWindow = WindowClass()
