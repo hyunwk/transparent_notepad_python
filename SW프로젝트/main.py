@@ -79,7 +79,9 @@ class WindowClass(QMainWindow, form_class):
         self.action_hide.triggered.connect(self.hideFunction)
         self.action_unhide.triggered.connect(self.unhideFunction)
         self.action_capture.triggered.connect(self.captureFunction)
-
+        
+        data = self.textEdit.createMimeDataFromSelection()
+        self.textEdit.canInsertFromMimeData(data)
         #시작시 과목 선택
         select = selectSubject()
         select.exec_()
@@ -87,7 +89,7 @@ class WindowClass(QMainWindow, form_class):
         #내용 불러오기
         content = get_content(selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date)
         self.setWindowTitle("과목 : " + selectSubject.sub_name)
-        self.plainTextEdit.setPlainText(content)
+        self.textEdit.setText(content)
 
 
         #생성된 노트 마지막에 커서 위치
@@ -104,12 +106,12 @@ class WindowClass(QMainWindow, form_class):
     def ischanged(self):
         if not self.opened:
             print('not changed')
-            if self.plainTextEdit.toPlainText().strip():  # 열린적은 없는데 에디터 내용이 있으면
+            if self.textEdit.toPlainText().strip():  # 열린적은 없는데 에디터 내용이 있으면
                 return True
             return False
 
         # 열린 적 있을 시
-        current_data = self.plainTextEdit.toPlainText()  # 현재 데이터
+        current_data = self.textEdit.toPlainText()  # 현재 데이터
 
         with open(self.opened_file_path, encoding='UTF8') as f:  # 파일에 저장된 데이터
             file_data = f.read()
@@ -151,14 +153,14 @@ class WindowClass(QMainWindow, form_class):
         sub_week = selectSubject.sub_week
         sub_date = selectSubject.sub_date
 
-        data = self.plainTextEdit.toPlainText()
+        data = self.textEdit.toPlainText()
 
         #선택한 주차 내용 불러오기
         content_start = data.find(sub_date) + len(sub_date) + 1
         sub_content = data[content_start:]
 
         tup = (sub_name, sub_week, sub_date,sub_content)
-        add_subject(tup)  # oracle db에 저장
+        add_subject(tup,self.opened)  # oracle db에 저장
 
         '''
         # data 마지막시간 기준으로 그 후 데이터 찾기
@@ -184,7 +186,7 @@ class WindowClass(QMainWindow, form_class):
         with open(fname, encoding='UTF8') as f:
             data = f.read()
 
-        self.plainTextEdit.setPlainText(data)
+        self.textEdit.setText(data)
 
         self.opened = True
         self.opened_file_path = fname
@@ -251,31 +253,7 @@ class WindowClass(QMainWindow, form_class):
         pyautogui.screenshot('D:/{}.png'.format(self.now), region=(500, 100, 1000, 700))
         print("캡쳐 완료")
 
-#plaintextedit에 사진 넣기 위해
-"""class MyTextBrowser(QtGui.QTextBrowser):
-    def __init__(self, parent=None):
-        super(MyTextBrowser, self).__init__(parent)
 
-        self.setReadOnly(False)
-
-    def canInsertFromMimeData(self, source):
-        if source.hasImage():
-            return True
-
-        else:
-            return super(MyTextBrowser, self).canInsertFromMimeData(source)
-
-    def insertFromMimeData(self, source):
-        if source.hasImage():
-            image = QtCore.QVariant(source.imageData())
-
-            document = self.document()
-            document.addResource(
-                QtGui.QTextDocument.ImageResource,
-                QtCore.QUrl("image"),
-                image
-            )
-"""
 
 app = QApplication(sys.argv)
 mainWindow = WindowClass()

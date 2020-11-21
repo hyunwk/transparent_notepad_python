@@ -1,6 +1,5 @@
 import cx_Oracle
 import os
-from find import findWindow
 
 #get_content 를 위한 리스트
 date_list = []  # date_name 리스트
@@ -64,14 +63,38 @@ def get_content(sub_name, sub_week,sub_date):
 
     return content_notepad
 
-def add_subject(tup):
+def add_subject(tup,opened):
     os.putenv('NLS_LANG', '.UTF8')
     con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
     cursor = con1.cursor()
 
-    try :
+    cursor.execute("SELECT * FROM notepad order by sub_week ")
+
+    try:
+        for row in cursor:
+            #과목명이 같은 경우
+            if( row[0] == tup[0]):
+                #과목명 같고 주차 같은경우
+                if (opened):  # sub_content 저장 후 다시 저장 할때
+                    query = "UPDATE NOTEPAD SET sub_content =(:4) " \
+                            "where sub_name = (:1) and sub_week = (:2)"
+                    cursor.execute(query,tup)
+                    con1.commit()
+                    cursor.close()
+                    con1.close()
+                    return
+                #과목명 같고 주차 다른경우
+                else :
+                    query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
+                    cursor.execute(query,tup)
+                    con1.commit()
+                    cursor.close()
+                    con1.close()
+                    return
+
+        #과목명 다른 경우 row는 x tup에만 있음
         query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
-        cursor.execute(query,tup)
+        cursor.execute(query, tup)
         con1.commit()
 
     except Exception as ex:  # 에러 종류
