@@ -9,7 +9,6 @@ from oracleDB import *
 from find import findWindow
 
 # notepad 기본, ui 참조 : https://onedrive.live.com/?cid=eb4f2a403d81809b&id=EB4F2A403D81809B%21201640&authkey=!AGYeXcxeLR6zXQU
-
 form_class = uic.loadUiType("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\notepad.ui")[0]
 
 class selectSubject(QDialog):
@@ -61,9 +60,7 @@ class WindowClass(QMainWindow, form_class):
         super().__init__()
         self.setupUi(self)
 
-        self.action_open.triggered.connect(self.openFunction)
-        self.action_save.triggered.connect(self.saveFunction)
-        self.action_saveas.triggered.connect(self.saveAsFunction)
+        self.action_save.triggered.connect(self.save_file)
         self.action_close.triggered.connect(self.close)
 
         self.action_undo.triggered.connect(self.undoFunction)
@@ -91,64 +88,43 @@ class WindowClass(QMainWindow, form_class):
         self.setWindowTitle("과목 : " + selectSubject.sub_name)
         self.textEdit.setText(content)
 
-
         #생성된 노트 마지막에 커서 위치
         #self.cursor = self.plainTextEdit.textCursor()
         #self.cursor.setPosition(len(content))
         
         self.opened = False
-        self.opened_file_path = '제목 없음'
+
         self.capture_cnt = 0
 
         self.setMouseTracking(True)
-
-    # 열린 적 없을 시
-    def ischanged(self):
-        if not self.opened:
-            print('not changed')
-            if self.textEdit.toPlainText().strip():  # 열린적은 없는데 에디터 내용이 있으면
-                return True
-            return False
-
-        # 열린 적 있을 시
-        current_data = self.textEdit.toPlainText()  # 현재 데이터
-
-        with open(self.opened_file_path, encoding='UTF8') as f:  # 파일에 저장된 데이터
-            file_data = f.read()
-
-        if current_data == file_data:  # 열린적이 있고 변경사항이 없으면
-            return False
-        else:  # 열린적이 있고 변경사항이 있으면
-            return True
 
     #변경된 데이터 저장
     def save_changed_data(self):
         msgBox = QMessageBox()
         msgBox.setWindowTitle('저장')
-        msgBox.setText("변경 내용을 {}에 저장하시겠습니까?".format(self.opened_file_path))
+        msgBox.setText("변경 내용을  저장하시겠습니까?")
         msgBox.addButton('저장', QMessageBox.YesRole)  # 0
         msgBox.addButton('저장 안 함', QMessageBox.NoRole)  # 1
         msgBox.addButton('취소', QMessageBox.RejectRole)  # 2
 
         # 최상단 고정
-        msgBox.setWindowFlags(Qt.WindowStaysOnTopHint)
+        #msgBox.setWindowFlags(Qt.WindowStaysOnTopHint)
         msgBox.show()
 
         # 버튼 클릭 결과
         ret = msgBox.exec_()
         if ret == 0:
-            self.saveFunction()
+            self.save_file()
         else:
             return ret
 
     def closeEvent(self, event):
-        if self.ischanged():  # 열린적이 있고 변경사항이 있으면 열린적은 없는데 에디터 내용이 있으면
-            ret = self.save_changed_data()
+        ret = self.save_changed_data()
 
-            if ret == 2:
-                event.ignore()
+        if ret == 2:
+            event.ignore()
 
-    def save_file(self, fname):
+    def save_file(self):
         sub_name = selectSubject.sub_name
         sub_week = selectSubject.sub_week
         sub_date = selectSubject.sub_date
@@ -160,7 +136,7 @@ class WindowClass(QMainWindow, form_class):
         sub_content = data[content_start:]
 
         tup = (sub_name, sub_week, sub_date,sub_content)
-        add_subject(tup,self.opened)  # oracle db에 저장
+        add_subject(tup)  # oracle db에 저장
 
         '''
         # data 마지막시간 기준으로 그 후 데이터 찾기
@@ -174,43 +150,6 @@ class WindowClass(QMainWindow, form_class):
             selectSubject.sub_content= data[content_start:content_end]
             print(selectSubject.sub_content)
         '''
-
-        with open(fname, 'w', encoding='UTF8') as f:
-            f.write(data)
-
-        self.opened = True
-        self.opened_file_path = fname
-        print("save {}!!".format(fname))
-
-    def open_file(self, fname):
-        with open(fname, encoding='UTF8') as f:
-            data = f.read()
-
-        self.textEdit.setText(data)
-
-        self.opened = True
-        self.opened_file_path = fname
-
-        print("open {}!!".format(fname))
-
-    def openFunction(self):
-        if self.ischanged():  # 열린적이 있고 변경사항이 있으면 열린적은 없는데 에디터 내용이 있으면
-            ret = self.save_changed_data()
-
-        fname = QFileDialog.getOpenFileName(self)
-        if fname[0]:
-            self.open_file(fname[0])
-
-    def saveFunction(self):
-        if self.opened:
-            self.save_file(self.opened_file_path)
-        else:
-            self.saveAsFunction()
-
-    def saveAsFunction(self):
-        fname = QFileDialog.getSaveFileName(self)
-        if fname[0]:
-            self.save_file(fname[0])
 
     def undoFunction(self):
         self.plainTextEdit.undo()

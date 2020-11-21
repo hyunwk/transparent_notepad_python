@@ -82,7 +82,6 @@
     </property>
     <addaction name="action_open"/>
     <addaction name="action_save"/>
-    <addaction name="action_saveas"/>
     <addaction name="action_close"/>
    </widget>
    <widget class="QMenu" name="menu_edit">
@@ -94,12 +93,7 @@
     <addaction name="action_copy"/>
     <addaction name="action_paste"/>
     <addaction name="action_find"/>
-    <addaction name="action_next_find"/>
-    <addaction name="action_prev_find"/>
     <addaction name="action_find_replace"/>
-    <addaction name="action_go"/>
-    <addaction name="action_all_select"/>
-    <addaction name="action_datetime"/>
     <addaction name="action_capture"/>
    </widget>
    <widget class="QMenu" name="menu_view">
@@ -159,7 +153,7 @@
     <string>잘라내기</string>
    </property>
    <property name="shortcut">
-    <string/>
+    <string>Ctrl+X</string>
    </property>
   </action>
   <action name="action_copy">
@@ -175,7 +169,7 @@
     <string>붙여넣기</string>
    </property>
    <property name="shortcut">
-    <string/>
+    <string>Ctrl+V</string>
    </property>
   </action>
   <action name="action_find">
@@ -183,7 +177,7 @@
     <string>찾기</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+E</string>
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="action_next_find">
