@@ -83,6 +83,7 @@
     <addaction name="action_open"/>
     <addaction name="action_save"/>
     <addaction name="action_close"/>
+    <addaction name="action_stt"/>
    </widget>
    <widget class="QMenu" name="menu_edit">
     <property name="title">
@@ -266,6 +267,11 @@
   <action name="action_capture">
    <property name="text">
     <string>캡쳐</string>
+   </property>
+  </action>
+  <action name="action_stt">
+   <property name="text">
+    <string>STT</string>
    </property>
   </action>
  </widget>

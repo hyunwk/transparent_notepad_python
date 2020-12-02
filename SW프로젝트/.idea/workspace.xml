@@ -19,11 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38249ba0-36d8-484f-a97e-f27ac69dce4f" name="Default Changelist" comment="13주차 과제 시작">
+    <list default="true" id="38249ba0-36d8-484f-a97e-f27ac69dce4f" name="Default Changelist" comment="13주차 &#10;-file system -&gt; db 수정">
+      <change afterPath="$PROJECT_DIR$/record_audio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stt_etri.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stt_kakao.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/기초공부.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SW프로젝트.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SW프로젝트.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notepad.ui" beforeDir="false" afterPath="$PROJECT_DIR$/notepad.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oracleDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/oracleDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stt.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +61,27 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="기초공부" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SW프로젝트" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기초공부.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SW프로젝트" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,6 +124,48 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="record_audio" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SW프로젝트" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/record_audio.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="stt_kakao" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SW프로젝트" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\ab845\OneDrive - 인하공업전문대학\swproject-notepad\SW프로젝트\stt_kakao.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SW프로젝트" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -120,6 +189,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.record_audio" />
+        <item itemvalue="Python.stt_kakao" />
+        <item itemvalue="Python.기초공부" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.oracleDB" />
       </list>
@@ -183,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605943149178</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="13주차 &#10;-file system -&gt; db 수정">
+      <created>1605946543049</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605946543049</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,7 +284,8 @@
     <MESSAGE value="sub_content 타입 clob 변경" />
     <MESSAGE value="ui text 타입 plainTextEdit -&gt; textEdit 변경" />
     <MESSAGE value="13주차 과제 시작" />
-    <option name="LAST_COMMIT_MESSAGE" value="13주차 과제 시작" />
+    <MESSAGE value="13주차 &#10;-file system -&gt; db 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="13주차 &#10;-file system -&gt; db 수정" />
   </component>
   <component name="WindowStateProjectService">
     <state width="400" height="438" key="DebuggerActiveHint" timestamp="1605610499698">
@@ -216,46 +296,50 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604719220784" />
-    <state width="1515" height="201" key="GridCell.Tab.0.bottom" timestamp="1605944502511">
+    <state width="1515" height="200" key="GridCell.Tab.0.bottom" timestamp="1606887093939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605944502511" />
-    <state width="1515" height="201" key="GridCell.Tab.0.center" timestamp="1605944502510">
+    <state width="1515" height="200" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606887093939" />
+    <state width="1515" height="200" key="GridCell.Tab.0.center" timestamp="1606887093939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605944502510" />
-    <state width="1515" height="201" key="GridCell.Tab.0.left" timestamp="1605944502510">
+    <state width="1515" height="200" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606887093939" />
+    <state width="1515" height="200" key="GridCell.Tab.0.left" timestamp="1606887093939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605944502510" />
-    <state width="1515" height="201" key="GridCell.Tab.0.right" timestamp="1605944502511">
+    <state width="1515" height="200" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606887093939" />
+    <state width="1515" height="200" key="GridCell.Tab.0.right" timestamp="1606887093939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605944502511" />
-    <state width="1515" height="201" key="GridCell.Tab.1.bottom" timestamp="1605944502511">
+    <state width="1515" height="200" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606887093939" />
+    <state width="1515" height="200" key="GridCell.Tab.1.bottom" timestamp="1606887093940">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605944502511" />
-    <state width="1515" height="201" key="GridCell.Tab.1.center" timestamp="1605944502511">
+    <state width="1515" height="200" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606887093940" />
+    <state width="1515" height="200" key="GridCell.Tab.1.center" timestamp="1606887093939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1605944502511" />
-    <state width="1515" height="201" key="GridCell.Tab.1.left" timestamp="1605944502511">
+    <state width="1515" height="200" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606887093939" />
+    <state width="1515" height="200" key="GridCell.Tab.1.left" timestamp="1606887093939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1605944502511" />
-    <state width="1515" height="201" key="GridCell.Tab.1.right" timestamp="1605944502511">
+    <state width="1515" height="200" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606887093939" />
+    <state width="1515" height="200" key="GridCell.Tab.1.right" timestamp="1606887093940">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605944502511" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605943149806">
+    <state width="1515" height="200" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606887093940" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1606882138286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605943149806" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605696991695">
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606882138286" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605946547489">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605696991695" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605946547489" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606883511965">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606883511965" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605946257726">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -266,8 +350,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>127</line>
+          <line>137</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -283,6 +372,8 @@
         <watch expression="WindowClass.opened" />
         <watch expression="opened" />
         <watch expression="content_list" />
+        <watch expression=" row[0] " />
+        <watch expression="data" />
       </configuration>
     </watches-manager>
   </component>

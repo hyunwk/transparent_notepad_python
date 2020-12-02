@@ -7,6 +7,8 @@ import pyautogui
 from datetime import datetime
 from oracleDB import *
 from find import findWindow
+from record_audio import record
+
 
 # notepad 기본, ui 참조 : https://onedrive.live.com/?cid=eb4f2a403d81809b&id=EB4F2A403D81809B%21201640&authkey=!AGYeXcxeLR6zXQU
 form_class = uic.loadUiType("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\notepad.ui")[0]
@@ -17,6 +19,7 @@ class selectSubject(QDialog):
     sub_week = 0
     sub_date = now.strftime('%Y-%m-%d %H:%M:%S')
     sub_content = ""
+    sub_image=""
 
     def __init__(self):
         super(selectSubject, self).__init__()
@@ -24,8 +27,8 @@ class selectSubject(QDialog):
         self.setWindowTitle("과목 선택")
         self.show()
 
+        #db에서 subject 불러온 후 리스트에 저장
         sub_list = get_subject()
-
         for i in sub_list:
             self.list_subject.addItem(str(i))
 
@@ -76,6 +79,8 @@ class WindowClass(QMainWindow, form_class):
         self.action_hide.triggered.connect(self.hideFunction)
         self.action_unhide.triggered.connect(self.unhideFunction)
         self.action_capture.triggered.connect(self.captureFunction)
+
+        self.action_stt.triggered.connect(self.sttFunction)
         
         data = self.textEdit.createMimeDataFromSelection()
         self.textEdit.canInsertFromMimeData(data)
@@ -91,12 +96,17 @@ class WindowClass(QMainWindow, form_class):
         #생성된 노트 마지막에 커서 위치
         #self.cursor = self.plainTextEdit.textCursor()
         #self.cursor.setPosition(len(content))
-        
-        self.opened = False
 
         self.capture_cnt = 0
 
         self.setMouseTracking(True)
+
+    def sttFunction(self):
+        try:
+            record()
+        except Exception as ex:  # 에러 종류
+            print('에러가 발생 했습니다', ex)
+
 
     #변경된 데이터 저장
     def save_changed_data(self):
@@ -128,6 +138,7 @@ class WindowClass(QMainWindow, form_class):
         sub_name = selectSubject.sub_name
         sub_week = selectSubject.sub_week
         sub_date = selectSubject.sub_date
+        sub_image = selectSubject.sub_image
 
         data = self.textEdit.toPlainText()
 
@@ -135,7 +146,7 @@ class WindowClass(QMainWindow, form_class):
         content_start = data.find(sub_date) + len(sub_date) + 1
         sub_content = data[content_start:]
 
-        tup = (sub_name, sub_week, sub_date,sub_content)
+        tup = (sub_name, sub_week, sub_date,sub_content,sub_image)
         add_subject(tup)  # oracle db에 저장
 
         '''
