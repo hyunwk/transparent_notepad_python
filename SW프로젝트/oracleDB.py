@@ -82,8 +82,8 @@ def add_subject(tup):
             if( row[0] == tup[0]):
 
                 #과목명 같고 주차 같은경우
-                if (get_content().is_exsit):  # sub_content 저장 후 다시 저장 할때
-                    query = "UPDATE NOTEPAD SET sub_content =(:4),sub_image=(:5) " \
+                if (row[1]==tup[1]):  # sub_content 저장 후 다시 저장 할때
+                    query = "UPDATE NOTEPAD SET sub_content =(:4) " \
                             "where sub_name = (:1) and sub_week = (:2)"
                     cursor.execute(query,tup)
                     con1.commit()
@@ -93,7 +93,7 @@ def add_subject(tup):
 
                 #과목명 같고 주차 다른경우
                 else :
-                    query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4,:5)"
+                    query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4,' ')"
                     cursor.execute(query,tup)
                     con1.commit()
                     cursor.close()
@@ -101,7 +101,7 @@ def add_subject(tup):
                     return
 
         #과목명 다른 경우 / db가 없을 경우
-        query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4,:5)"
+        query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
         cursor.execute(query, tup)
         con1.commit()
 

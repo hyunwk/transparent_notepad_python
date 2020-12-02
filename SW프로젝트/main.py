@@ -138,7 +138,6 @@ class WindowClass(QMainWindow, form_class):
         sub_name = selectSubject.sub_name
         sub_week = selectSubject.sub_week
         sub_date = selectSubject.sub_date
-        sub_image = selectSubject.sub_image
 
         data = self.textEdit.toPlainText()
 
@@ -146,7 +145,7 @@ class WindowClass(QMainWindow, form_class):
         content_start = data.find(sub_date) + len(sub_date) + 1
         sub_content = data[content_start:]
 
-        tup = (sub_name, sub_week, sub_date,sub_content,sub_image)
+        tup = (sub_name, sub_week, sub_date,sub_content)
         add_subject(tup)  # oracle db에 저장
 
         '''
