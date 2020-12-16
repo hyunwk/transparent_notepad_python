@@ -93,7 +93,7 @@ def add_subject(tup):
 
                 #과목명 같고 주차 다른경우
                 else :
-                    query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4,' ')"
+                    query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
                     cursor.execute(query,tup)
                     con1.commit()
                     cursor.close()

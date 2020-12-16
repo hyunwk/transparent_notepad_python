@@ -7,8 +7,6 @@ import pyautogui
 from datetime import datetime
 from oracleDB import *
 from find import findWindow
-from record_audio import record
-
 
 # notepad 기본, ui 참조 : https://onedrive.live.com/?cid=eb4f2a403d81809b&id=EB4F2A403D81809B%21201640&authkey=!AGYeXcxeLR6zXQU
 form_class = uic.loadUiType("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\notepad.ui")[0]
@@ -65,7 +63,7 @@ class WindowClass(QMainWindow, form_class):
 
         self.action_save.triggered.connect(self.save_file)
         self.action_close.triggered.connect(self.close)
-
+        self.action_open.triggered.connect(self.open)
         self.action_undo.triggered.connect(self.undoFunction)
         self.action_cut.triggered.connect(self.cutFunction)
         self.action_copy.triggered.connect(self.copyFunction)
@@ -84,7 +82,7 @@ class WindowClass(QMainWindow, form_class):
         
         data = self.textEdit.createMimeDataFromSelection()
         self.textEdit.canInsertFromMimeData(data)
-        #시작시 과목 선택
+        #시작시 과목 선택s
         select = selectSubject()
         select.exec_()
         
@@ -118,7 +116,6 @@ class WindowClass(QMainWindow, form_class):
         msgBox.addButton('취소', QMessageBox.RejectRole)  # 2
 
         # 최상단 고정
-        #msgBox.setWindowFlags(Qt.WindowStaysOnTopHint)
         msgBox.show()
 
         # 버튼 클릭 결과
@@ -148,18 +145,18 @@ class WindowClass(QMainWindow, form_class):
         tup = (sub_name, sub_week, sub_date,sub_content)
         add_subject(tup)  # oracle db에 저장
 
-        '''
-        # data 마지막시간 기준으로 그 후 데이터 찾기
-        compare_string = "==================="
-        iCnt=1 
-        # 주차 별 내용 담기
-        for date in date_list:
-            content_start = data.find(date) +len(date) + 1
-            content_end = data.find(compare_string,iCnt+1) -1
+    def open(self):
+        self.save_file()
 
-            selectSubject.sub_content= data[content_start:content_end]
-            print(selectSubject.sub_content)
-        '''
+        now = datetime.now()
+        selectSubject.sub_date = now.strftime('%Y-%m-%d %H:%M:%S')
+
+        select = selectSubject()
+        select.exec_()
+
+        content = get_content(selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date)
+        self.setWindowTitle("과목 : " + selectSubject.sub_name)
+        self.textEdit.setText(content)
 
     def undoFunction(self):
         self.plainTextEdit.undo()
