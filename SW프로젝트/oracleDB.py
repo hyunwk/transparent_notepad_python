@@ -27,7 +27,7 @@ def get_subject():
 
 def get_content(sub_name, sub_week,sub_date):
     os.putenv('NLS_LANG', '.UTF8')
-    con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
+    con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     cursor = con1.cursor()
 
     cursor.execute("SELECT * FROM notepad order by sub_week ")
@@ -70,7 +70,7 @@ def get_content(sub_name, sub_week,sub_date):
 
 def add_subject(tup):
     os.putenv('NLS_LANG', '.UTF8')
-    con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
+    con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     cursor = con1.cursor()
     cursor.execute("SELECT * FROM notepad order by sub_week ")
     try:

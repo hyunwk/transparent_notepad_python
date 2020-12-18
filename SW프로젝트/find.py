@@ -6,7 +6,8 @@ from PyQt5 import QtCore
 class findWindow(QDialog):
     def __init__(self, parent):  # parent로 종속적으로 만듬.ex) parent가 꺼지면 같이 꺼지도록
         super(findWindow, self).__init__(parent)
-        uic.loadUi("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\find.ui", self)
+        #uic.loadUi("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\find.ui", self)
+        uic.loadUi("find.ui", self)
         self.show()
         try:
             self.parent = parent

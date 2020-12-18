@@ -11,8 +11,8 @@ from find import findWindow
 
 
 # notepad 기본, ui 참조 : https://onedrive.live.com/?cid=eb4f2a403d81809b&id=EB4F2A403D81809B%21201640&authkey=!AGYeXcxeLR6zXQU
-form_class = uic.loadUiType("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\notepad.ui")[0]
-
+#form_class = uic.loadUiType("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\notepad.ui")[0]
+form_class = uic.loadUiType("notepad.ui")[0]
 
 class selectSubject(QDialog):
     sub_name = ""
@@ -23,7 +23,7 @@ class selectSubject(QDialog):
 
     def __init__(self):
         super(selectSubject, self).__init__()
-        uic.loadUi("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\selectSubject.ui", self)
+        uic.loadUi("selectSubject.ui", self)
         self.setWindowTitle("과목 선택")
         self.show()
 
