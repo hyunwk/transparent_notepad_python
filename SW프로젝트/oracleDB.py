@@ -9,7 +9,7 @@ content_list = []  # content_name 리스트
 def get_subject():
     os.putenv('NLS_LANG', '.UTF8')
     #con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
-    con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.56.1:1521/ORCL')
+    con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     cursor = con1.cursor()
 
     #program 시작시 과목 출력 db
