@@ -9,16 +9,17 @@ from datetime import datetime
 import oracleDB as db
 from find import findWindow
 
-
 # notepad 기본, ui 참조 : https://onedrive.live.com/?cid=eb4f2a403d81809b&id=EB4F2A403D81809B%21201640&authkey=!AGYeXcxeLR6zXQU
-#form_class = uic.loadUiType("C:\\Users\\ab845\\OneDrive - 인하공업전문대학\\swproject-notepad\\SW프로젝트\\notepad.ui")[0]
+
 form_class = uic.loadUiType("notepad.ui")[0]
+
+now = datetime.now()
+temp = now.strftime('%Y-%m-%d %H:%M:%S')
+sub_date = temp
 
 class selectSubject(QDialog):
     sub_name = ""
-    now = datetime.now()
     sub_week = 0
-    sub_date = now.strftime('%Y-%m-%d %H:%M:%S')
     sub_content = ""
 
     def __init__(self):
@@ -88,7 +89,7 @@ class WindowClass(QMainWindow, form_class):
         select.exec_()
 
         # 내용 불러오기
-        content = db.get_content(selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date)
+        content = db.get_content(selectSubject.sub_name, selectSubject.sub_week, sub_date)
         self.setWindowTitle("과목 : " + selectSubject.sub_name)
         self.textEdit.setText(content)
 
@@ -136,7 +137,6 @@ class WindowClass(QMainWindow, form_class):
         #과목선택시 선택한 정보
         sub_name = selectSubject.sub_name
         sub_week = selectSubject.sub_week
-        sub_date = selectSubject.sub_date
 
         data = self.textEdit.toPlainText()
         data=data.ljust(10)

@@ -46,11 +46,18 @@ def get_content(sub_name, sub_week,sub_date):
                     #2. 과목, 주차 존재 시
                     global content_exists
                     content_exists = True
-                    query = "UPDATE NOTEPAD SET sub_date =(:3) " \
-                            "where sub_name = (:1) and sub_week = (:2)"
-                    tup=(sub_name, sub_week,m.selectSubject.sub_date)
-                    cursor.execute(query, tup)
+                    cursor1 = con1.cursor()
+                    query = "UPDATE NOTEPAD SET sub_date = to_char((:3)) " \
+                            "where sub_name = to_char((:1)) and sub_week = to_number((:2))"
+                    tup=(sub_name, sub_week, m.sub_date)
+
+                    cursor1.execute(query, tup)
                     con1.commit()
+                    week_list.append(sub_week)
+                    date_list.append(m.sub_date)
+                    content_list.append(row[3])
+                    continue
+
 
                 week_list.append(row[1])
                 date_list.append(row[2])
@@ -71,6 +78,7 @@ def get_content(sub_name, sub_week,sub_date):
             content_notepad += str(sub_week) + "주차 - " + sub_date + "\n"
 
     except Exception as ex:
+        con1.rollback()
         print("에러가 발생했습니다. :",ex)
 
     cursor.close()
@@ -84,36 +92,20 @@ def add_content(tup):
     con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     cursor = con1.cursor()
     global content_exists
-
-    cursor.execute("SELECT * FROM notepad order by sub_week ")
+    tup1=tup[:2]
     try:
-        for row in cursor:
-            # 1.같은 과목, 주차 선택 경우
-            if(content_exists):
-                query = "UPDATE NOTEPAD SET sub_content =(:4) " \
-                        "where sub_name = (:1) and sub_week = (:2)"
-                cursor.execute(query, tup)
-                con1.commit()
-                cursor.close()
-                con1.close()
-                return
+        # 1.같은 과목, 주차 선택 경우
+        if(content_exists):
+            query = "delete from notepad where sub_name = (:1) and sub_week = (:2)"
+            cursor.execute(query,tup1)
 
-            # 2. 주차 다른 경우
-            if( row[0] == tup[0]):
-                #과목명 같고 주차 같은경우
-                query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
-                cursor.execute(query,tup)
-                con1.commit()
-                cursor.close()
-                con1.close()
-                return
-
-        #3. 새로운 과목 선택
+        # 2. 주차 다른 경우 #3. 새로운 과목 선택
         query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
-        cursor.execute(query, tup)
+        cursor.execute(query,tup)
         con1.commit()
 
     except Exception as ex:  # 에러 종류
+        con1.rollback()
         print('에러가 발생 했습니다', ex)
 
     cursor.close()
