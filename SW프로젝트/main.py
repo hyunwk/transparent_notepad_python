@@ -6,7 +6,7 @@ from PyQt5 import *
 from PyQt5.QtWidgets import QApplication
 import pyautogui
 from datetime import datetime
-from oracleDB import *
+import oracleDB as db
 from find import findWindow
 
 
@@ -27,7 +27,7 @@ class selectSubject(QDialog):
         self.setWindowTitle("과목 선택")
         self.show()
 
-        sub_list = get_subject()
+        sub_list = db.get_subject()
 
         for i in sub_list:
             self.list_subject.addItem(str(i))
@@ -88,7 +88,7 @@ class WindowClass(QMainWindow, form_class):
         select.exec_()
 
         # 내용 불러오기
-        content = get_content(selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date)
+        content = db.get_content(selectSubject.sub_name, selectSubject.sub_week, selectSubject.sub_date)
         self.setWindowTitle("과목 : " + selectSubject.sub_name)
         self.textEdit.setText(content)
 
@@ -122,6 +122,7 @@ class WindowClass(QMainWindow, form_class):
         else:
             return ret
 
+    #x 버튼 클릭 or 끝내기 메뉴 클릭 시
     def closeEvent(self, event):
         if not self.saved:
             ret = self.save_changed_data()
@@ -132,31 +133,27 @@ class WindowClass(QMainWindow, form_class):
             event.ignore()
 
     def save_file(self):
+        #과목선택시 선택한 정보
         sub_name = selectSubject.sub_name
         sub_week = selectSubject.sub_week
         sub_date = selectSubject.sub_date
 
         data = self.textEdit.toPlainText()
         data=data.ljust(10)
-        # 선택한 주차 내용 불러오기
+
+        # 새로운 내용 insert
         content_start = data.find(sub_date) + len(sub_date) + 1
         sub_content = data[content_start:]
 
+        # 존재하는 내용 update
+        if db.content_exists:
+            content_end = sub_content.find('===================')
+            sub_content = sub_content[:content_end]
+
         tup = (sub_name, sub_week, sub_date, sub_content)
-        add_subject(tup)  # oracle db에 저장
+        db.add_content(tup)  # oracle db에 저장
 
         self.saved = True
-        '''
-        # data 마지막시간 기준으로 그 후 데이터 찾기
-        compare_string = "==================="
-        iCnt=1 
-        # 주차 별 내용 담기
-        for date in date_list:
-            content_start = data.find(date) +len(date) + 1
-            content_end = data.find(compare_string,iCnt+1) -1
-            selectSubject.sub_content= data[content_start:content_end]
-            print(selectSubject.sub_content)
-        '''
 
     def undoFunction(self):
         self.plainTextEdit.undo()

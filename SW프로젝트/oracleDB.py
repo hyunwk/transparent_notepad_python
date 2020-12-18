@@ -1,21 +1,24 @@
 import cx_Oracle
 import os
 
+
 #get_content 를 위한 리스트
+sub_list = [] # sub_name 리스트
 date_list = []  # date_name 리스트
 week_list = []  # week_name 리스트
 content_list = []  # content_name 리스트
 
+content_exists=False
+
+#시작시 과목 list 출력
 def get_subject():
     os.putenv('NLS_LANG', '.UTF8')
-    #con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
     con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     cursor = con1.cursor()
 
     #program 시작시 과목 출력 db
     cursor.execute('select sub_name from notepad')
-    # sub_name 리스트
-    sub_list =[]
+
     #과목 리스트 db에서 가져옴
     for row in cursor:
         if str(row).strip('()/\',') not in sub_list: # 중복 제거
@@ -25,22 +28,29 @@ def get_subject():
     con1.close()
     return sub_list
 
+#과목 내용 불러오기
 def get_content(sub_name, sub_week,sub_date):
+    import main as m
     os.putenv('NLS_LANG', '.UTF8')
     con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     cursor = con1.cursor()
 
     cursor.execute("SELECT * FROM notepad order by sub_week ")
-    is_exist = False
 
     try:
         for row in cursor:
-            if( row[0] == sub_name): 
-            #선택한 과목명과 db의 과목명이 같을 경우
-            
+            #1. 과목 존재 시
+            if( row[0] == sub_name):
+
                 if(row[1] == sub_week): 
-                #선택한 과목명과 주차가 이미 존재할 시
-                    is_exist = True
+                    #2. 과목, 주차 존재 시
+                    global content_exists
+                    content_exists = True
+                    query = "UPDATE NOTEPAD SET sub_date =(:3) " \
+                            "where sub_name = (:1) and sub_week = (:2)"
+                    tup=(sub_name, sub_week,m.selectSubject.sub_date)
+                    cursor.execute(query, tup)
+                    con1.commit()
 
                 week_list.append(row[1])
                 date_list.append(row[2])
@@ -55,8 +65,8 @@ def get_content(sub_name, sub_week,sub_date):
                                + str(date_list[i]).strip("[]/\''") +"\n"\
                                + str(content_list[i]).strip('[]/\'') +"\n\n"
 
-        # 선택한 과목명과 주차가 이미 존재하지 않을 시
-        if(not is_exist):
+        # 3.선택한 과목명과 주차가 이미 존재하지 않을 시
+        if(not content_exists):
             content_notepad += "===================\n"
             content_notepad += str(sub_week) + "주차 - " + sub_date + "\n"
 
@@ -68,35 +78,37 @@ def get_content(sub_name, sub_week,sub_date):
 
     return content_notepad
 
-def add_subject(tup):
+#과목 내용 저장하기
+def add_content(tup):
     os.putenv('NLS_LANG', '.UTF8')
     con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     cursor = con1.cursor()
+    global content_exists
+
     cursor.execute("SELECT * FROM notepad order by sub_week ")
     try:
         for row in cursor:
-            #과목명이 같은 경우
+            # 1.같은 과목, 주차 선택 경우
+            if(content_exists):
+                query = "UPDATE NOTEPAD SET sub_content =(:4) " \
+                        "where sub_name = (:1) and sub_week = (:2)"
+                cursor.execute(query, tup)
+                con1.commit()
+                cursor.close()
+                con1.close()
+                return
+
+            # 2. 주차 다른 경우
             if( row[0] == tup[0]):
                 #과목명 같고 주차 같은경우
-                if (row[1] == tup[1]):  # sub_content 저장 후 다시 저장 할때
-                    query = "UPDATE NOTEPAD SET sub_content =(:4) " \
-                            "where sub_name = (:1) and sub_week = (:2)"
-                    cursor.execute(query,tup)
-                    con1.commit()
-                    cursor.close()
-                    con1.close()
-                    return
+                query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
+                cursor.execute(query,tup)
+                con1.commit()
+                cursor.close()
+                con1.close()
+                return
 
-                #과목명 같고 주차 다른경우
-                else :
-                    query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
-                    cursor.execute(query,tup)
-                    con1.commit()
-                    cursor.close()
-                    con1.close()
-                    return
-
-        #과목명 다른 경우 row는 x tup에만 있음
+        #3. 새로운 과목 선택
         query = "INSERT INTO NOTEPAD VALUES (:1,:2,:3,:4)"
         cursor.execute(query, tup)
         con1.commit()
