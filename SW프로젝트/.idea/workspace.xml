@@ -19,10 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38249ba0-36d8-484f-a97e-f27ac69dce4f" name="Default Changelist" comment="DOCS : 저장 오류 미해결">
+    <list default="true" id="38249ba0-36d8-484f-a97e-f27ac69dce4f" name="Default Changelist" comment="DOCS : week12 pull 후 재작성 / week16 오류">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oracleDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/oracleDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.wav" beforeDir="false" afterPath="$PROJECT_DIR$/output.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record_audio.py" beforeDir="false" afterPath="$PROJECT_DIR$/record_audio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record_test_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/record_test_2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.record_audio">
     <configuration name="기초공부" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SW프로젝트" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,9 +183,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.oracleDB" />
-        <item itemvalue="Python.record_test_2" />
         <item itemvalue="Python.record_audio" />
+        <item itemvalue="Python.record_test_2" />
+        <item itemvalue="Python.oracleDB" />
         <item itemvalue="Python.stt_kakao" />
         <item itemvalue="Python.기초공부" />
       </list>
@@ -276,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608092927841</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="DOCS : week12 pull 후 재작성 / week16 오류">
+      <created>1608279323340</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608279323340</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,9 +309,14 @@
     <MESSAGE value="13주차 &#10;-file system -&gt; db 수정" />
     <MESSAGE value="DOC : record, stt (16khz convert 오류)" />
     <MESSAGE value="DOCS : 저장 오류 미해결" />
-    <option name="LAST_COMMIT_MESSAGE" value="DOCS : 저장 오류 미해결" />
+    <MESSAGE value="DOCS : week12 pull 후 재작성 / week16 오류" />
+    <option name="LAST_COMMIT_MESSAGE" value="DOCS : week12 pull 후 재작성 / week16 오류" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="753" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608395760706">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="753" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1608395760706" />
     <state width="400" height="438" key="DebuggerActiveHint" timestamp="1605610499698">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -312,50 +325,58 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604719220784" />
-    <state width="1515" height="200" key="GridCell.Tab.0.bottom" timestamp="1608279248300">
+    <state width="1515" height="179" key="GridCell.Tab.0.bottom" timestamp="1608399165342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608279248300" />
-    <state width="1515" height="200" key="GridCell.Tab.0.center" timestamp="1608279248300">
+    <state width="1515" height="179" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608399165342" />
+    <state width="1515" height="179" key="GridCell.Tab.0.center" timestamp="1608399165342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608279248300" />
-    <state width="1515" height="200" key="GridCell.Tab.0.left" timestamp="1608279248299">
+    <state width="1515" height="179" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608399165342" />
+    <state width="1515" height="179" key="GridCell.Tab.0.left" timestamp="1608399165342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608279248299" />
-    <state width="1515" height="200" key="GridCell.Tab.0.right" timestamp="1608279248300">
+    <state width="1515" height="179" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608399165342" />
+    <state width="1515" height="179" key="GridCell.Tab.0.right" timestamp="1608399165342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608279248300" />
-    <state width="1515" height="200" key="GridCell.Tab.1.bottom" timestamp="1608279248300">
+    <state width="1515" height="179" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608399165342" />
+    <state width="1515" height="375" key="GridCell.Tab.1.bottom" timestamp="1608399165338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608279248300" />
-    <state width="1515" height="200" key="GridCell.Tab.1.center" timestamp="1608279248300">
+    <state width="1515" height="375" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608399165338" />
+    <state width="1515" height="375" key="GridCell.Tab.1.center" timestamp="1608399165338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1608279248300" />
-    <state width="1515" height="200" key="GridCell.Tab.1.left" timestamp="1608279248300">
+    <state width="1515" height="375" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1608399165338" />
+    <state width="1515" height="375" key="GridCell.Tab.1.left" timestamp="1608399165338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1608279248300" />
-    <state width="1515" height="200" key="GridCell.Tab.1.right" timestamp="1608279248300">
+    <state width="1515" height="375" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1608399165338" />
+    <state width="1515" height="375" key="GridCell.Tab.1.right" timestamp="1608399165338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="200" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1608279248300" />
+    <state width="1515" height="375" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1608399165338" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1606882138286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606882138286" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1608092927344">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1608279321314">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1608092927344" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608093094736">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1608279321314" />
+    <state x="551" y="100" width="893" height="624" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1608396955567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1608093094736" />
+    <state x="551" y="100" width="893" height="624" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1608396955567" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608395296501">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1608395296501" />
+    <state x="707" y="11" width="581" height="801" key="find.popup" timestamp="1608396067248">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="707" y="11" width="581" height="801" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1608396067248" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605946257726">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -363,6 +384,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/record_audio.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -381,6 +409,8 @@
         <watch expression="get_content().is_exsit" />
         <watch expression=" sub_week" />
         <watch expression="Qt.WindowStaysOnTopHint" />
+        <watch expression="dev['name'].find('Stereo Mix')" />
+        <watch expression="dev_index" />
       </configuration>
     </watches-manager>
   </component>
