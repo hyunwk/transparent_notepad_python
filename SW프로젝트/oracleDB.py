@@ -13,7 +13,8 @@ content_exists=False
 #시작시 과목 list 출력
 def get_subject():
     os.putenv('NLS_LANG', '.UTF8')
-    con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
+    #con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
+    con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
     cursor = con1.cursor()
 
     #program 시작시 과목 출력 db
@@ -32,7 +33,8 @@ def get_subject():
 def get_content(sub_name, sub_week,sub_date):
     import main as m
     os.putenv('NLS_LANG', '.UTF8')
-    con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
+    # con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
+    con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
     cursor = con1.cursor()
 
     cursor.execute("SELECT * FROM notepad order by sub_week ")
@@ -89,7 +91,8 @@ def get_content(sub_name, sub_week,sub_date):
 #과목 내용 저장하기
 def add_content(tup):
     os.putenv('NLS_LANG', '.UTF8')
-    con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
+    # con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
+    con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
     cursor = con1.cursor()
     global content_exists
     tup1=tup[:2]
