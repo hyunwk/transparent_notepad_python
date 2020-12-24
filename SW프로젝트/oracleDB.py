@@ -31,7 +31,6 @@ def get_subject():
 
 #과목 내용 불러오기
 def get_content(sub_name, sub_week,sub_date):
-    import main as m
     os.putenv('NLS_LANG', '.UTF8')
     # con1 = cx_Oracle.connect('SYSTEM/AB8488454@192.168.35.177:1521/ORCL')
     con1 = cx_Oracle.connect('SYSTEM/AB8488454@localhost:1521/ORCL')
@@ -43,20 +42,19 @@ def get_content(sub_name, sub_week,sub_date):
         for row in cursor:
             #1. 과목 존재 시
             if( row[0] == sub_name):
-
-                if(row[1] == sub_week): 
-                    #2. 과목, 주차 존재 시
+                # 2. 과목, 주차 존재 시
+                if(row[1] == sub_week):
                     global content_exists
                     content_exists = True
                     cursor1 = con1.cursor()
                     query = "UPDATE NOTEPAD SET sub_date = to_char((:3)) " \
                             "where sub_name = to_char((:1)) and sub_week = to_number((:2))"
-                    tup=(sub_name, sub_week, m.sub_date)
+                    tup=(sub_name, sub_week, sub_date)
 
                     cursor1.execute(query, tup)
                     con1.commit()
                     week_list.append(sub_week)
-                    date_list.append(m.sub_date)
+                    date_list.append(sub_date)
                     content_list.append(row[3])
                     continue
 

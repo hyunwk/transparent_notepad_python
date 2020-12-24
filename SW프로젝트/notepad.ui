@@ -39,7 +39,13 @@
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QTextEdit" name="textEdit"/>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -102,6 +108,7 @@
      <string>보기</string>
     </property>
     <addaction name="separator"/>
+    <addaction name="action_set_font"/>
     <addaction name="action_set_top_level"/>
     <addaction name="action_unset_top_level"/>
    </widget>
@@ -270,6 +277,11 @@
   <action name="action_stt">
    <property name="text">
     <string>STT</string>
+   </property>
+  </action>
+  <action name="action_set_font">
+   <property name="text">
+    <string>폰트</string>
    </property>
   </action>
  </widget>

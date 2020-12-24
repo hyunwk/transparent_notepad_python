@@ -30,6 +30,7 @@ class selectSubject(QDialog):
 
         sub_list = db.get_subject()
 
+        #과목 list에 저장
         for i in sub_list:
             self.list_subject.addItem(str(i))
 
@@ -59,6 +60,37 @@ class selectSubject(QDialog):
         self.list_subject.addItem(self.sub_name)
         self.txt_addItem.setText("")
 
+class Font(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.title = 'PyQt5 font dialog - pythonspot.com'
+        self.left = 10
+        self.top = 10
+        self.width = 320
+        self.height = 200
+        self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.left, self.top, self.width, self.height)
+
+        button = QPushButton('Open PyQt5 Font Dialog', self)
+        button.setToolTip('font dialog')
+        button.move(50, 50)
+        button.clicked.connect(self.on_click)
+
+        self.show()
+
+    @pyqtSlot()
+    def on_click(self):
+        print('PyQt5 button click')
+        self.openFontDialog()
+
+    def openFontDialog(self):
+        font, ok = QFontDialog.getFont()
+        if ok:
+            print(font.toString())
+            return font
 
 class WindowClass(QMainWindow, form_class):
     def __init__(self):
@@ -72,8 +104,8 @@ class WindowClass(QMainWindow, form_class):
         self.action_cut.triggered.connect(self.cutFunction)
         self.action_copy.triggered.connect(self.copyFunction)
         self.action_paste.triggered.connect(self.pasteFunction)
-
         self.action_find.triggered.connect(self.findFunction)
+        self.action_set_font.triggered.connect(self.fontFunction)
 
         self.slider.valueChanged.connect(self.changeFunction)
         self.action_set_top_level.triggered.connect(self.setWindowTop)
@@ -93,15 +125,21 @@ class WindowClass(QMainWindow, form_class):
         self.setWindowTitle("과목 : " + selectSubject.sub_name)
         self.textEdit.setText(content)
 
-        # 생성된 노트 마지막에 커서 위치
-        # self.cursor = self.plainTextEdit.textCursor()
-        # self.cursor.setPosition(len(content))
-
         self.opened = False
 
         self.capture_cnt = 0
 
         self.setMouseTracking(True)
+
+        self.saved = False
+
+    #font 설정
+    def fontFunction(self):
+        try:
+            font_info = Font.openFontDialog(self)
+            self.textEdit.setFont(font_info)
+        except Exception as ex:
+            print("에러가 발생했습니다. :", ex)
 
     # 변경된 데이터 저장
     def save_changed_data(self):
@@ -133,6 +171,9 @@ class WindowClass(QMainWindow, form_class):
         if ret == 2:
             event.ignore()
 
+        #pyqt 종료 코드 필요
+        QCoreApplication.instance().quit
+
     def save_file(self):
         #과목선택시 선택한 정보
         sub_name = selectSubject.sub_name
@@ -150,8 +191,9 @@ class WindowClass(QMainWindow, form_class):
             content_end = sub_content.find('===================')
             sub_content = sub_content[:content_end]
 
+        # oracle db에 저장
         tup = (sub_name, sub_week, sub_date, sub_content)
-        db.add_content(tup)  # oracle db에 저장
+        db.add_content(tup)
 
         self.saved = True
 
@@ -195,7 +237,6 @@ class WindowClass(QMainWindow, form_class):
 
         pyautogui.screenshot('D:/{}.png'.format(self.now), region=(500, 100, 1000, 700))
         print("캡쳐 완료")
-
 
 app = QApplication(sys.argv)
 mainWindow = WindowClass()

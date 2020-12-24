@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>과목 선택 창</string>
   </property>
   <widget class="QListWidget" name="list_subject">
    <property name="geometry">
