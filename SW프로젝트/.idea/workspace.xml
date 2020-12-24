@@ -19,12 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38249ba0-36d8-484f-a97e-f27ac69dce4f" name="Default Changelist" comment="DOCS : Working on record">
+    <list default="true" id="38249ba0-36d8-484f-a97e-f27ac69dce4f" name="Default Changelist" comment="fix : always on top function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notepad.ui" beforeDir="false" afterPath="$PROJECT_DIR$/notepad.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oracleDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/oracleDB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selectSubject.ui" beforeDir="false" afterPath="$PROJECT_DIR$/selectSubject.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,7 +290,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608441319151</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat : font dialog&#10;fix : run ui twice">
+      <created>1608816198149</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608816198149</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix : always on top function">
+      <created>1608816930152</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1608816930152</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -319,7 +331,9 @@
     <MESSAGE value="DOCS : 저장 오류 미해결" />
     <MESSAGE value="DOCS : week12 pull 후 재작성 / week16 오류" />
     <MESSAGE value="DOCS : Working on record" />
-    <option name="LAST_COMMIT_MESSAGE" value="DOCS : Working on record" />
+    <MESSAGE value="feat : font dialog&#10;fix : run ui twice" />
+    <MESSAGE value="fix : always on top function" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : always on top function" />
   </component>
   <component name="WindowStateProjectService">
     <state x="753" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608395760706">
@@ -334,22 +348,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604719220784" />
-    <state width="1515" height="178" key="GridCell.Tab.0.bottom" timestamp="1608816006459">
+    <state width="1515" height="178" key="GridCell.Tab.0.bottom" timestamp="1608817544343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608816006459" />
-    <state width="1515" height="178" key="GridCell.Tab.0.center" timestamp="1608816006458">
+    <state width="1515" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608817544343" />
+    <state width="1515" height="178" key="GridCell.Tab.0.center" timestamp="1608817544343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608816006458" />
-    <state width="1515" height="178" key="GridCell.Tab.0.left" timestamp="1608816006458">
+    <state width="1515" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608817544343" />
+    <state width="1515" height="178" key="GridCell.Tab.0.left" timestamp="1608817544343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608816006458" />
-    <state width="1515" height="178" key="GridCell.Tab.0.right" timestamp="1608816006458">
+    <state width="1515" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608817544343" />
+    <state width="1515" height="178" key="GridCell.Tab.0.right" timestamp="1608817544343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608816006458" />
+    <state width="1515" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608817544343" />
     <state width="1515" height="202" key="GridCell.Tab.1.bottom" timestamp="1608815483510">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -370,10 +384,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606882138286" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1608441302275">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1608816929574">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1608441302275" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1608816929574" />
     <state x="551" y="100" width="893" height="624" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1608396955567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -401,7 +415,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>138</line>
+          <line>130</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>

@@ -111,6 +111,7 @@
     <addaction name="action_set_font"/>
     <addaction name="action_set_top_level"/>
     <addaction name="action_unset_top_level"/>
+    <addaction name="action_hide_frame"/>
    </widget>
    <addaction name="menu_file"/>
    <addaction name="menu_edit"/>
@@ -282,6 +283,22 @@
   <action name="action_set_font">
    <property name="text">
     <string>폰트</string>
+   </property>
+  </action>
+  <action name="action_hide_frame">
+   <property name="text">
+    <string>Hide</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
+   </property>
+  </action>
+  <action name="action_show_frame">
+   <property name="text">
+    <string>Show</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
    </property>
   </action>
  </widget>

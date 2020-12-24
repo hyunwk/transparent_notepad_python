@@ -103,8 +103,7 @@ class WindowClass(QMainWindow, form_class):
         self.slider.valueChanged.connect(self.changeFunction)
         self.action_set_top_level.triggered.connect(self.setWindowTop)
         self.action_unset_top_level.triggered.connect(self.unsetWindowTop)
-        self.action_hide.triggered.connect(self.hideFunction)
-        self.action_unhide.triggered.connect(self.unhideFunction)
+        self.action_hide_frame.triggered.connect(self.hideFunction)
         self.action_capture.triggered.connect(self.captureFunction)
 
         data = self.textEdit.createMimeDataFromSelection()
@@ -218,11 +217,7 @@ class WindowClass(QMainWindow, form_class):
         self.show()
 
     def hideFunction(self):
-        self.hide()
-
-    def unhideFunction(self):
-        # 수정 필요
-        self.show()
+        self.showMinimized()
 
     def captureFunction(self):
         self.tempNow = datetime.datetime.now()
