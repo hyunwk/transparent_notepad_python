@@ -77,19 +77,12 @@ class Font(QWidget):
         button = QPushButton('Open PyQt5 Font Dialog', self)
         button.setToolTip('font dialog')
         button.move(50, 50)
-        button.clicked.connect(self.on_click)
 
         self.show()
-
-    @pyqtSlot()
-    def on_click(self):
-        print('PyQt5 button click')
-        self.openFontDialog()
 
     def openFontDialog(self):
         font, ok = QFontDialog.getFont()
         if ok:
-            print(font.toString())
             return font
 
 class WindowClass(QMainWindow, form_class):
@@ -217,11 +210,11 @@ class WindowClass(QMainWindow, form_class):
         self.setWindowOpacity(opacity_value)
 
     def setWindowTop(self):
-        self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         self.show()
 
     def unsetWindowTop(self):
-        self.setWindowFlags(Qt.WindowStaysOnBottomHint)
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnBottomHint)
         self.show()
 
     def hideFunction(self):
