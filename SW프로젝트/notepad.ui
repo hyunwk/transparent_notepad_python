@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
-    <height>382</height>
+    <width>764</width>
+    <height>443</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,7 +42,8 @@
        <widget class="QTextEdit" name="textEdit">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <family>나눔고딕</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
        </widget>
@@ -78,7 +79,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>543</width>
+     <width>764</width>
      <height>26</height>
     </rect>
    </property>
@@ -99,9 +100,6 @@
     <addaction name="action_cut"/>
     <addaction name="action_copy"/>
     <addaction name="action_paste"/>
-    <addaction name="action_find"/>
-    <addaction name="action_find_replace"/>
-    <addaction name="action_capture"/>
    </widget>
    <widget class="QMenu" name="menu_view">
     <property name="title">
@@ -144,7 +142,7 @@
   </action>
   <action name="action_close">
    <property name="text">
-    <string>끝내기</string>
+    <string>종료</string>
    </property>
   </action>
   <action name="action_undo">

@@ -2,7 +2,6 @@ import sys
 from PyQt5.Qt import *
 from PyQt5 import Qt, QtCore
 from PyQt5 import uic
-from PyQt5 import *
 from PyQt5.QtWidgets import QApplication
 import pyautogui
 from datetime import datetime
@@ -190,16 +189,16 @@ class WindowClass(QMainWindow, form_class):
         self.saved = True
 
     def undoFunction(self):
-        self.plainTextEdit.undo()
+        self.textEdit.undo()
 
     def cutFunction(self):
-        self.plainTextEdit.cut()
-
+        self.textEdit.cut()
+    
     def copyFunction(self):
-        self.plainTextEdit.copy()
+        self.textEdit.copy()
 
     def pasteFunction(self):
-        self.plainTextEdit.paste()
+        self.textEdit.paste()
 
     def findFunction(self):
         findWindow(self)
