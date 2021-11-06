@@ -30,6 +30,6 @@
 
 <img src="https://user-images.githubusercontent.com/34102064/140603414-84db0da7-0eae-435b-96d3-464830b8bd25.png" width="500">
 
-## [그림3 - 투명 화면 구성]
+## [그림3 - 화면 내용 구성]
 
 <img src="https://user-images.githubusercontent.com/34102064/140603422-e4a16bad-117b-4a72-be60-cac8703c35fb.png" width="500">
