@@ -3,6 +3,7 @@ from PyQt5 import uic
 from PyQt5.QtGui import QTextCursor
 from PyQt5 import QtCore
 
+
 class findWindow(QDialog):
     def __init__(self, parent):  # parent로 종속적으로 만듬.ex) parent가 꺼지면 같이 꺼지도록
         super(findWindow, self).__init__(parent)
@@ -70,7 +71,8 @@ class findWindow(QDialog):
     def setCursor(self, start, end):
         print(self.cursor.selectionStart(), self.cursor.selectionEnd())
         self.cursor.setPosition(start)  # 앞에 커서 찍고
-        self.cursor.movePosition(QTextCursor.Right, QTextCursor.KeepAnchor, end - start)  # 뒤로 커서를 움직인다
+        self.cursor.movePosition(
+            QTextCursor.Right, QTextCursor.KeepAnchor, end - start)  # 뒤로 커서를 움직인다
         self.pe.setTextCursor(self.cursor)
 
     def notFoundMsg(self, pattern):
